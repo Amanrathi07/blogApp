@@ -43,5 +43,7 @@ app.delete("/user/:id", (req, res) => {
 app.listen(3000, () => {
   console.log("server start");
 
+  console.log("change");
+  
 //   db conect function  
 });
