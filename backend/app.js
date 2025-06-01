@@ -1,49 +1,26 @@
 const express = require("express");
+const cors = require('cors');
+
+
+const userRoute = require("./Routes/userRoutes");
+const dbConect = require("./Config/db");
+
+
 
 const app = express();
 
 
-app.use(express.use());
+
+app.use(cors());
+app.use(express.json());
 
 
-app.get("/user", (req, res) => {
-  try {
-    res.status(200).send("get");
-  } catch (error) {
-    res.status(404).send("error");
-  }
-});
-
-
-app.post("/user", (req, res) => {
-  try {
-    res.status(200).send("post");
-  } catch (error) {
-    res.status(404).send("error");
-  }
-});
-
-app.patch("/user/:id", (req, res) => {
-  try {
-    res.status(200).send("patch");
-  } catch (error) {
-    res.status(404).send("error");
-  }
-});
-
-app.delete("/user/:id", (req, res) => {
-  try {
-    res.status(200).send("delete");
-  } catch (error) {
-    res.status(404).send("error");
-  }
-});
+app.use('/v1',userRoute);
 
 
 app.listen(3000, () => {
-  console.log("server start");
 
-  console.log("change");
-  
-//   db conect function  
+    console.log("server start");
+    dbConect();
+
 });
