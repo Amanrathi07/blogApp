@@ -39,10 +39,14 @@ async function postBlog(req,res){
   
     const data_TO_Database = await BlogModel.create({...BlogData });
 
+    const blogs = await BlogModel.find({auther:"684de2bb73ef9944867a9d0a"}).populate();
+      console.log(blogs)
+
     return res.status(200).json({
       status: "success",
       message: "post successfully",
-      data: data_TO_Database
+      data: data_TO_Database,
+  
     });
   } catch (error) {
     res.status(404).send("error");
