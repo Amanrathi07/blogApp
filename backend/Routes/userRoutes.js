@@ -1,9 +1,11 @@
 const express = require("express");
 const userModel = require("../Model/userModel");
-const { getUser,postUser,updateUser,deleteUser} = require("../Controller/userController");
+const { getUsers,getUser,postUser,updateUser,deleteUser} = require("../Controller/userController");
 const route = express.Router();
 
-route.get("/user", getUser);
+route.get("/users", getUsers);
+
+route.get('/user', getUser)
 
 route.post("/user", postUser);
 
